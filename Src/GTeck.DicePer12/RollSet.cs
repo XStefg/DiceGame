@@ -13,6 +13,6 @@ public record RollSet( ImmutableArray<DiceSet> DiceSet, Roll RemaingRoll )
 
   public int Value => DiceSet.First().Dices.Sum( s => s.Value );
 
-  public string OutputDebug => $"DiceSet={string.Join( ",", DiceSet.Select( d => d.Value ) )} RemainingRoll={RemaingRoll.OutputDebug}";
+  public string OutputDebug => $"DiceSet.Value={string.Join( ",", DiceSet.Select( d => d.Value ) )} RemainingRoll={RemaingRoll.OutputDebug}";
 
 }
