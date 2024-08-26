@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Diagnostics;
 using System.Linq;
 
 namespace GTeck.DicePer12;
 
+[DebuggerDisplay("{OutputDebug}")]
 public record Roll( ImmutableArray<Dice> Dices )
 {
   public Roll( params Dice[] dices ) : this( dices.ToImmutableArray() )
@@ -18,8 +20,10 @@ public record Roll( ImmutableArray<Dice> Dices )
     return new Roll( dices );
   }
 
-  public Roll SubRoll( int index )
+  public Roll RemoveDice( int index )
   {
     return new Roll( Dices.RemoveAt( index ) );
   }
+
+  public string OutputDebug => string.Join( ",", Dices.Select( d => d.Value ) );
 }
