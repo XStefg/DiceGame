@@ -1,0 +1,16 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <OutputPath>$(SolutionDir)$(Configuration)</OutputPath>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <Company>Eddyfi</Company>
+    <Copyright>© Eddyfi. All rights reserved.</Copyright>
+    <CoreRepositoryDir>$(MSBuildThisFileDirectory)..\CoreMaster\</CoreRepositoryDir>
+    <EddyShellRepositoryDir>$(MSBuildThisFileDirectory)</EddyShellRepositoryDir>
+    <Nullable>enable</Nullable>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <Platforms>x64</Platforms>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </PropertyGroup>
+</Project>

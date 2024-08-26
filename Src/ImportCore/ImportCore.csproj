@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.Build.NoTargets/3.7.0">
+
+  <ItemGroup>
+    <ConfigurationFiles Include="$(CoreRepositoryDir)Settings.XamlStyler" />
+    <ConfigurationFiles Include="$(CoreRepositoryDir).editorconfig" />
+  </ItemGroup>
+
+  <Import Project="$(EddyShellRepositoryDir)CoreDependencies.props" />
+
+  <Target Name="CopyFiles" 
+          BeforeTargets="Build" 
+          Inputs="@(ConfigurationFiles)" 
+          Outputs="@(ConfigurationFiles->'$(EddyShellRepositoryDir)%(Filename)%(Extension)')">
+    <Message Text="Copying configuration files..." Importance="high" />
+    <Copy SourceFiles="@(ConfigurationFiles)" 
+          DestinationFolder="$(EddyShellRepositoryDir)" 
+          SkipUnchangedFiles="true" 
+          ContinueOnError="true" />
+    <Error Text="The Eddyfi Core must be cloned and compiled at $([System.IO.Path]::GetFullPath('$(CoreRepositoryDir)')). The following bat file can be executed to fetch the Eddyfi Core: $([System.IO.Path]::GetFullPath('$(EddyShellRepositoryDir)\FetchEddyfiCore.bat'))" 
+           Condition="'$(MSBuildLastTaskResult)' == 'False'" />
+  </Target>
+
+  <Target Name="CopyCoreDlls" 
+          BeforeTargets="Build" 
+          Inputs="@(CoreDlls->'$(CoreRepositoryDir)$(ConfigurationName)\%(Filename)%(Extension)')" 
+          Outputs="@(CoreDlls->'$(TargetDir)%(Filename)%(Extension)')">
+    <Message Text="Copying Eddyfi Core Dll's..." Importance="high" />
+    <Copy SourceFiles="@(CoreDlls->'$(CoreRepositoryDir)$(ConfigurationName)\%(Filename)%(Extension)')" 
+          DestinationFolder="$(TargetDir)" 
+          SkipUnchangedFiles="true" 
+          ContinueOnError="true" />
+    <Error Text="The Eddyfi Core must be cloned and compiled at $([System.IO.Path]::GetFullPath('$(CoreRepositoryDir)')). The following bat file can be executed to fetch the Eddyfi Core: $([System.IO.Path]::GetFullPath('$(EddyShellRepositoryDir)\FetchEddyfiCore.bat'))" 
+           Condition="'$(MSBuildLastTaskResult)' == 'False'" />
+  </Target>
+
+</Project>

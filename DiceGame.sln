@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34607.119
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solutions Items", "Solutions Items", "{1B110633-5F30-435C-9F70-358257C22670}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		CoreDependencies.props = CoreDependencies.props
+		Directory.build.props = Directory.build.props
+		Directory.Packages.props = Directory.Packages.props
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiceGame", "Src\DiceGame\DiceGame.csproj", "{E1D8F384-1ADE-48F4-A1E8-2A436DA055B7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0938D7D7-9CE0-4850-94C7-FB473B73CAFB} = {0938D7D7-9CE0-4850-94C7-FB473B73CAFB}
+		{3F2DDAA6-AD0F-4D89-866E-24B2044E573B} = {3F2DDAA6-AD0F-4D89-866E-24B2044E573B}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GTeck.DicePer12", "Src\GTeck.DicePer12\GTeck.DicePer12.csproj", "{0938D7D7-9CE0-4850-94C7-FB473B73CAFB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3F2DDAA6-AD0F-4D89-866E-24B2044E573B} = {3F2DDAA6-AD0F-4D89-866E-24B2044E573B}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImportCore", "Src\ImportCore\ImportCore.csproj", "{3F2DDAA6-AD0F-4D89-866E-24B2044E573B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTeck.DicePer12.Tests", "Src\UnitTests\GTeck.DicePer12.Tests\GTeck.DicePer12.Tests.csproj", "{F58910B0-008C-419E-BC78-493AACA4E9AF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0938D7D7-9CE0-4850-94C7-FB473B73CAFB} = {0938D7D7-9CE0-4850-94C7-FB473B73CAFB}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E1D8F384-1ADE-48F4-A1E8-2A436DA055B7}.Debug|x64.ActiveCfg = Debug|x64
+		{E1D8F384-1ADE-48F4-A1E8-2A436DA055B7}.Debug|x64.Build.0 = Debug|x64
+		{E1D8F384-1ADE-48F4-A1E8-2A436DA055B7}.Release|x64.ActiveCfg = Release|x64
+		{E1D8F384-1ADE-48F4-A1E8-2A436DA055B7}.Release|x64.Build.0 = Release|x64
+		{0938D7D7-9CE0-4850-94C7-FB473B73CAFB}.Debug|x64.ActiveCfg = Debug|x64
+		{0938D7D7-9CE0-4850-94C7-FB473B73CAFB}.Debug|x64.Build.0 = Debug|x64
+		{0938D7D7-9CE0-4850-94C7-FB473B73CAFB}.Release|x64.ActiveCfg = Release|x64
+		{0938D7D7-9CE0-4850-94C7-FB473B73CAFB}.Release|x64.Build.0 = Release|x64
+		{3F2DDAA6-AD0F-4D89-866E-24B2044E573B}.Debug|x64.ActiveCfg = Debug|x64
+		{3F2DDAA6-AD0F-4D89-866E-24B2044E573B}.Debug|x64.Build.0 = Debug|x64
+		{3F2DDAA6-AD0F-4D89-866E-24B2044E573B}.Release|x64.ActiveCfg = Release|x64
+		{3F2DDAA6-AD0F-4D89-866E-24B2044E573B}.Release|x64.Build.0 = Release|x64
+		{F58910B0-008C-419E-BC78-493AACA4E9AF}.Debug|x64.ActiveCfg = Debug|x64
+		{F58910B0-008C-419E-BC78-493AACA4E9AF}.Debug|x64.Build.0 = Debug|x64
+		{F58910B0-008C-419E-BC78-493AACA4E9AF}.Release|x64.ActiveCfg = Release|x64
+		{F58910B0-008C-419E-BC78-493AACA4E9AF}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E9665A1B-FE3F-4BCE-B9AE-819C92B2352D}
+	EndGlobalSection
+EndGlobal

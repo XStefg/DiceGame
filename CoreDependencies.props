@@ -1,0 +1,32 @@
+<Project>
+  <ItemGroup>
+    <CoreDlls Include="Eddyfi.Core.Test.Utilities.dll" />
+    <CoreDlls Include="Eddyfi.Core.Utilities.dll" />
+    <CoreDlls Include="Eddyfi.Core.Logging.NLog.dll" />
+    <CoreDlls Include="Eddyfi.Core.WPFTabTip.dll" />
+    <CoreDlls Include="CommonUIControls.Wpf.dll" />
+    <CoreDlls Include="ActionManager.dll" />
+    <CoreDlls Include="Eddyfi.Core.MathUtilities.dll" />
+    <CoreDlls Include="ProcessingUnitManager.dll" />
+    <CoreDlls Include="PublicContainer.dll" />
+    <CoreDlls Include="SharedResources.dll" />
+    <CoreDlls Include="Units.dll" />
+    <CoreDlls Include="EddyfiStyles.dll" />
+    <CoreDlls Include="Eddyfi.Core.CommonResources.dll" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(ContinuousIntegrationBuild)' != 'true'">
+    <CoreDlls Include="Eddyfi.Core.Test.Utilities.pdb" />
+    <CoreDlls Include="Eddyfi.Core.Utilities.pdb" />
+    <CoreDlls Include="Eddyfi.Core.Logging.NLog.pdb" />
+    <CoreDlls Include="Eddyfi.Core.WPFTabTip.pdb" />
+    <CoreDlls Include="CommonUIControls.Wpf.pdb" />
+    <CoreDlls Include="Eddyfi.Core.MathUtilities.pdb" />
+    <CoreDlls Include="ActionManager.pdb" />
+    <CoreDlls Include="ProcessingUnitManager.pdb" />
+    <CoreDlls Include="PublicContainer.pdb" />
+    <CoreDlls Include="SharedResources.pdb" />
+    <CoreDlls Include="Units.pdb" />
+    <CoreDlls Include="EddyfiStyles.pdb" />
+    <CoreDlls Include="Eddyfi.Core.CommonResources.pdb" />
+  </ItemGroup>
+</Project>

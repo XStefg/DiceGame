@@ -1,0 +1,10 @@
+<Project>
+  <Import Project="$(CoreRepositoryDir)Directory.Packages.props" />
+  <ItemGroup>
+    <PackageVersion Include="CliWrap" Version="3.6.4" />
+    <PackageVersion Include="Microsoft.Wim" Version="1.2.11" />
+    <PackageVersion Include="NLog.Extensions.Hosting" Version="5.0.4" />
+    <PackageVersion Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Hosting.Abstractions" Version="8.0.0" />
+  </ItemGroup>
+</Project>
