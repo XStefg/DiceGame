@@ -7,10 +7,31 @@ using System.Linq;
 namespace GTeck.DicePer12;
 
 [DebuggerDisplay("{OutputDebug}")]
-public record Roll( ImmutableArray<Dice> Dices )
+public sealed record Roll( ImmutableArray<Dice> Dices )
 {
   public Roll( params Dice[] dices ) : this( dices.ToImmutableArray() )
   {
+  }
+
+  public bool Equals( Roll? roll )
+  {
+    if ( roll is not null )
+    {
+      return Dices.SequenceEqual( roll.Dices);
+    }
+
+    return false;
+  }
+
+  public override int GetHashCode()
+  {
+    int hash = 17;
+    foreach ( Dice current in Dices )
+    {
+      hash = HashCode.Combine( hash, current );
+    }
+
+    return hash;
   }
 
   public static Roll RollDices( int numberOfDices, int nbOfSide = 6 )

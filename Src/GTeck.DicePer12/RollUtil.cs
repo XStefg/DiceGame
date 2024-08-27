@@ -55,4 +55,10 @@ public static class RollUtil
       yield return new( newDiceSet.ToArray(), remaingRoll );
     }
   }
+
+  public static IEnumerable<RollSet> RemoveDuplicate( IEnumerable<RollSet> currentRollSet )
+  {
+    return currentRollSet.Distinct();
+  }
+
 }
