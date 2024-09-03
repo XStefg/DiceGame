@@ -2,8 +2,15 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:DiceGame"
+             xmlns:eddyfi="http://schemas.eddyfi.com/wpf"
              StartupUri="MainWindow.xaml">
-    <Application.Resources>
-         
-    </Application.Resources>
+  <Application.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Eddyfi.Core.Themes.Wpf;component/Themes/LightTheme.xaml" />
+        <eddyfi:BundledTheme IsTouch="{eddyfi:LocalConfigStorage Configuration.IsTouch}" Theme="Light" />
+        <ResourceDictionary Source="pack://application:,,,/Eddyfi.Core.Themes.Wpf;component/Themes/Defaults.xaml" />
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </Application.Resources>
 </Application>

@@ -3,6 +3,44 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <UseWPF>true</UseWPF>
+    <RootNamespace>GTeck.DiceGame</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="System.CommandLine" />
+    <PackageReference Include="NLog.Extensions.Hosting" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Eddyfi.Core.Themes.Wpf">
+      <HintPath>$(TargetDir)Eddyfi.Core.Themes.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Eddyfi.Core.Utilities">
+      <HintPath>$(TargetDir)Eddyfi.Core.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="ProcessingUnitManager">
+      <HintPath>$(TargetDir)ProcessingUnitManager.dll</HintPath>
+    </Reference>
+    <Reference Include="ComponentManager">
+      <HintPath>$(TargetDir)ComponentManager.dll</HintPath>
+    </Reference>
+    <Reference Include="PublicContainer">
+      <HintPath>$(TargetDir)PublicContainer.dll</HintPath>
+    </Reference>
+    <Reference Include="Eddyfi.Core.Logging.NLog">
+      <HintPath>$(TargetDir)Eddyfi.Core.Logging.NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="CommonUI">
+      <HintPath>$(TargetDir)CommonUI.dll</HintPath>
+    </Reference>
+    <Reference Include="CommonUIControls.Wpf">
+      <HintPath>$(TargetDir)CommonUIControls.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Eddyfi.Core.CommonUI">
+      <HintPath>$(TargetDir)Eddyfi.Core.CommonUI.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 </Project>
