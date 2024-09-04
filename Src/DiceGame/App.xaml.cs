@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Threading;
 using Eddyfi.Core;
 using Eddyfi.Core.Logging.NLog;
+using GTeck.DiceGame;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -78,6 +79,13 @@ public partial class App : Application
     {
       _host.StartAsync().Wait();
       base.OnStartup( e );
+
+      MainWindow = new MainWindow();
+      MainWindowViewModel mainWindowDataContext = _host.Services.GetRequiredService<MainWindowViewModel>();
+      mainWindowDataContext.DialogService = new DialogService( MainWindow );
+      MainWindow.DataContext              = mainWindowDataContext;
+
+      MainWindow.Show();
     }
     catch ( Exception ex )
     {

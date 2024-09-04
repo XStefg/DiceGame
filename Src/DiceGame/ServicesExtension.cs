@@ -1,5 +1,6 @@
 ﻿using System;
 using Eddyfi.Core;
+using GTeck.DiceGame;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DiceGame;
@@ -14,7 +15,7 @@ public static class ServicesExtension
 
     //services.AddSingleton<ISystemService, SystemService>();
     services.AddSingleton<ILocalConfigStorage>( e => LocalConfigStorage.Instance );
-
+    services.AddSingleton<MainWindowViewModel>();
     //services.AddOptions<EddyShellConfiguration>()
     //        .Configure<IConfiguration>( ( settings, configuration ) =>
     //                                    {

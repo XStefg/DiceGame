@@ -4,9 +4,36 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DiceGame"
+        xmlns:eddyfi="http://schemas.eddyfi.com/wpf"
+        xmlns:diceGame="clr-namespace:GTeck.DiceGame"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
-    </Grid>
+        Title="MainWindow"
+        d:DataContext="{d:DesignInstance diceGame:MainWindowViewModel, IsDesignTimeCreatable=True}"
+        Height="450"
+        Width="800">
+  <Window.Resources>
+    <Style x:Key="DiceComboBox" TargetType="ComboBox" BasedOn="{StaticResource EddyfiMediumComboBox}">
+      <Setter Property="ItemsSource">
+        <Setter.Value>
+          <x:Array Type="{x:Type FrameworkElement}">
+            <TextBlock Text="-" />
+            <eddyfi:SvgIcon Source="./Resources/Dice1.svg" />
+            <eddyfi:SvgIcon Source="./Resources/Dice2.svg" />
+            <eddyfi:SvgIcon Source="./Resources/Dice3.svg" />
+            <eddyfi:SvgIcon Source="./Resources/Dice4.svg" />
+            <eddyfi:SvgIcon Source="./Resources/Dice5.svg" />
+            <eddyfi:SvgIcon Source="./Resources/Dice6.svg" />
+          </x:Array>
+        </Setter.Value>
+      </Setter>
+    </Style>
+  </Window.Resources>
+  <StackPanel>
+    <ComboBox SelectedIndex="{Binding SelectedDice1}" Style="{StaticResource DiceComboBox}" />
+    <ComboBox SelectedIndex="{Binding SelectedDice2}" Style="{StaticResource DiceComboBox}" />
+    <ComboBox SelectedIndex="{Binding SelectedDice3}" Style="{StaticResource DiceComboBox}" />
+    <ComboBox SelectedIndex="{Binding SelectedDice4}" Style="{StaticResource DiceComboBox}" />
+    <ComboBox SelectedIndex="{Binding SelectedDice5}" Style="{StaticResource DiceComboBox}" />
+    <!--<eddyfi:SvgIcon Source="./Resources/icon.svg" />-->
+  </StackPanel>
 </Window>

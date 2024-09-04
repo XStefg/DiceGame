@@ -83,6 +83,14 @@ public class RollUnitTests
                                                  } );
     rollSets[0].RemaingRoll.Dices.Should().BeEquivalentTo( new Dice[] { } );
 
+    rollSets[1].Value.Should().Be( 8 );
+    rollSets[1].DiceSet.Should().BeEquivalentTo( new[]
+                                                 {
+                                                   new DiceSet( new Dice( 4 ), new Dice( 4 ) ), 
+                                                   new DiceSet( new Dice( 4 ), new Dice( 4 ) )
+                                                 } );
+    rollSets[1].RemaingRoll.Dices.Should().BeEquivalentTo( new Dice[] { new ( 4 )} );
+
   }
 
   [TestMethod]
