@@ -16,13 +16,12 @@
       <Setter Property="ItemsSource">
         <Setter.Value>
           <x:Array Type="{x:Type FrameworkElement}">
-            <!--<TextBlock Text="-" />-->
-            <eddyfi:SvgIcon Source="./Resources/Dice1.svg" />
-            <eddyfi:SvgIcon Source="./Resources/Dice2.svg" />
-            <eddyfi:SvgIcon Source="./Resources/Dice3.svg" />
-            <eddyfi:SvgIcon Source="./Resources/Dice4.svg" />
-            <eddyfi:SvgIcon Source="./Resources/Dice5.svg" />
-            <eddyfi:SvgIcon Source="./Resources/Dice6.svg" />
+            <diceGame:DiceControl Value="1" />
+            <diceGame:DiceControl Value="2" />
+            <diceGame:DiceControl Value="3" />
+            <diceGame:DiceControl Value="4" />
+            <diceGame:DiceControl Value="5" />
+            <diceGame:DiceControl Value="6" />
           </x:Array>
         </Setter.Value>
       </Setter>

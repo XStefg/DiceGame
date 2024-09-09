@@ -71,11 +71,11 @@ internal class MainWindowViewModel : BaseViewModel
 
   private void UpdateRoll()
   {
-    if ( SelectedDice1 == 0 || SelectedDice2 == 0 || SelectedDice3 == 0 || SelectedDice4 == 0 || SelectedDice5 == 0 || SelectedDice6 == 0 )
-    {
-      Roll = null;
-      return;
-    }
+    //if ( SelectedDice1 == 0 || SelectedDice2 == 0 || SelectedDice3 == 0 || SelectedDice4 == 0 || SelectedDice5 == 0 || SelectedDice6 == 0 )
+    //{
+    //  Roll = null;
+    //  return;
+    //}
 
     Roll = new Roll( SelectedDice1 + 1, SelectedDice2 + 1, SelectedDice3 + 1, SelectedDice4 + 1, SelectedDice5 + 1, SelectedDice6 + 1);
   }
