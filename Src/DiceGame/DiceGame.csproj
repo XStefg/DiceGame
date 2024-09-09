@@ -8,16 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\Dice1.svg" />
-    <None Remove="Resources\Dice2.svg" />
-    <None Remove="Resources\Dice3.svg" />
-    <None Remove="Resources\Dice4.svg" />
-    <None Remove="Resources\Dice5.svg" />
-    <None Remove="Resources\Dice6.svg" />
-    <None Remove="Resources\icon.svg" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="System.CommandLine" />
     <PackageReference Include="NLog.Extensions.Hosting" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
@@ -53,6 +43,9 @@
     <Reference Include="Eddyfi.Core.CommonUI">
       <HintPath>$(TargetDir)Eddyfi.Core.CommonUI.dll</HintPath>
     </Reference>
+    <Reference Include="GTeck.DicePer12">
+      <HintPath>$(TargetDir)GTeck.DicePer12.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
@@ -62,6 +55,5 @@
     <Resource Include="Resources\Dice4.svg" />
     <Resource Include="Resources\Dice5.svg" />
     <Resource Include="Resources\Dice6.svg" />
-    <Resource Include="Resources\icon.svg" />
   </ItemGroup>
 </Project>

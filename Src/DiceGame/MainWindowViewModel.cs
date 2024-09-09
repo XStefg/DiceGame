@@ -4,10 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Eddyfi.Core;
+using GTeck.DicePer12;
 
 namespace GTeck.DiceGame;
 internal class MainWindowViewModel : BaseViewModel
 {
+  public MainWindowViewModel()
+  {
+    _subscriber = this.GetSubscriberBuilder()
+                      .AddSubscription( p => p.SelectedDice1, UpdateRoll )
+                      .AddSubscription( p => p.SelectedDice2, UpdateRoll )
+                      .AddSubscription( p => p.SelectedDice3, UpdateRoll )
+                      .AddSubscription( p => p.SelectedDice4, UpdateRoll )
+                      .AddSubscription( p => p.SelectedDice5, UpdateRoll )
+                      .AddSubscription( p => p.SelectedDice6, UpdateRoll )
+                      .SubscribeAndInvokeAll();
+  }
+
   public int SelectedDice1
   {
     get => _selectedDice1;
@@ -38,10 +51,43 @@ internal class MainWindowViewModel : BaseViewModel
     set => SetProperty( ref _selectedDice5, value );
   }
 
+  public int SelectedDice6
+  {
+    get => _selectedDice6;
+    set => SetProperty( ref _selectedDice6, value );
+  }
+
+  public Roll? Roll
+  {
+    get => _roll;
+    set => SetProperty( ref _roll, value );
+  }
+
+  protected override void Dispose( bool disposing )
+  {
+    _subscriber.Dispose();
+    base.Dispose( disposing );
+  }
+
+  private void UpdateRoll()
+  {
+    if ( SelectedDice1 == 0 || SelectedDice2 == 0 || SelectedDice3 == 0 || SelectedDice4 == 0 || SelectedDice5 == 0 || SelectedDice6 == 0 )
+    {
+      Roll = null;
+      return;
+    }
+
+    Roll = new Roll( SelectedDice1 + 1, SelectedDice2 + 1, SelectedDice3 + 1, SelectedDice4 + 1, SelectedDice5 + 1, SelectedDice6 + 1);
+  }
+
   private int _selectedDice1;
   private int _selectedDice2;
   private int _selectedDice3;
   private int _selectedDice4;
   private int _selectedDice5;
+  private int _selectedDice6;
+
+  private Roll?       _roll;
+  private IDisposable _subscriber;
 
 }

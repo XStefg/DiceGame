@@ -16,7 +16,7 @@
       <Setter Property="ItemsSource">
         <Setter.Value>
           <x:Array Type="{x:Type FrameworkElement}">
-            <TextBlock Text="-" />
+            <!--<TextBlock Text="-" />-->
             <eddyfi:SvgIcon Source="./Resources/Dice1.svg" />
             <eddyfi:SvgIcon Source="./Resources/Dice2.svg" />
             <eddyfi:SvgIcon Source="./Resources/Dice3.svg" />
@@ -28,12 +28,21 @@
       </Setter>
     </Style>
   </Window.Resources>
-  <StackPanel>
-    <ComboBox SelectedIndex="{Binding SelectedDice1}" Style="{StaticResource DiceComboBox}" />
-    <ComboBox SelectedIndex="{Binding SelectedDice2}" Style="{StaticResource DiceComboBox}" />
-    <ComboBox SelectedIndex="{Binding SelectedDice3}" Style="{StaticResource DiceComboBox}" />
-    <ComboBox SelectedIndex="{Binding SelectedDice4}" Style="{StaticResource DiceComboBox}" />
-    <ComboBox SelectedIndex="{Binding SelectedDice5}" Style="{StaticResource DiceComboBox}" />
-    <!--<eddyfi:SvgIcon Source="./Resources/icon.svg" />-->
-  </StackPanel>
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+    <StackPanel Grid.Row="0" Orientation="Horizontal">
+      <ComboBox SelectedIndex="{Binding SelectedDice1}" Style="{StaticResource DiceComboBox}" />
+      <ComboBox SelectedIndex="{Binding SelectedDice2}" Style="{StaticResource DiceComboBox}" />
+      <ComboBox SelectedIndex="{Binding SelectedDice3}" Style="{StaticResource DiceComboBox}" />
+      <ComboBox SelectedIndex="{Binding SelectedDice4}" Style="{StaticResource DiceComboBox}" />
+      <ComboBox SelectedIndex="{Binding SelectedDice5}" Style="{StaticResource DiceComboBox}" />
+      <ComboBox SelectedIndex="{Binding SelectedDice6}" Style="{StaticResource DiceComboBox}" />
+    </StackPanel>
+    <StackPanel Grid.Row="1">
+      <diceGame:DiceControl Value="1" />
+    </StackPanel>
+  </Grid>
 </Window>
