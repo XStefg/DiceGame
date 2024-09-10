@@ -27,20 +27,43 @@
       </Setter>
     </Style>
   </Window.Resources>
-  <Grid>
+
+  <Grid Margin="{eddyfi:Thickness All=S}">
     <Grid.RowDefinitions>
-      <RowDefinition Height="Auto" />
-      <RowDefinition Height="*" />
+      <RowDefinition Height="{eddyfi:GridLength Size=Px32}" />
+      <RowDefinition Height="{eddyfi:GridLength Size=M}" />
+      <RowDefinition Height="{eddyfi:GridLength Size=Px32}" />
     </Grid.RowDefinitions>
-    <StackPanel Grid.Row="0" Orientation="Horizontal">
-      <ComboBox SelectedIndex="{Binding SelectedDice1}" Style="{StaticResource DiceComboBox}" />
-      <ComboBox SelectedIndex="{Binding SelectedDice2}" Style="{StaticResource DiceComboBox}" />
-      <ComboBox SelectedIndex="{Binding SelectedDice3}" Style="{StaticResource DiceComboBox}" />
-      <ComboBox SelectedIndex="{Binding SelectedDice4}" Style="{StaticResource DiceComboBox}" />
-      <ComboBox SelectedIndex="{Binding SelectedDice5}" Style="{StaticResource DiceComboBox}" />
-      <ComboBox SelectedIndex="{Binding SelectedDice6}" Style="{StaticResource DiceComboBox}" />
-    </StackPanel>
-    <StackPanel Grid.Row="1">
+
+    <Grid Grid.Row="0">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+      <ComboBox Grid.Column="0" SelectedIndex="{Binding SelectedDice1}" Style="{StaticResource DiceComboBox}" />
+      <ComboBox Grid.Column="1" SelectedIndex="{Binding SelectedDice2}" Style="{StaticResource DiceComboBox}" />
+      <ComboBox Grid.Column="2" SelectedIndex="{Binding SelectedDice3}" Style="{StaticResource DiceComboBox}" />
+      <ComboBox Grid.Column="3" SelectedIndex="{Binding SelectedDice4}" Style="{StaticResource DiceComboBox}" />
+      <ComboBox Grid.Column="4" SelectedIndex="{Binding SelectedDice5}" Style="{StaticResource DiceComboBox}" />
+      <ComboBox Grid.Column="5" SelectedIndex="{Binding SelectedDice6}" Style="{StaticResource DiceComboBox}" />
+      <Button Grid.Column="6"
+              Command="{Binding RollRandomCommand}"
+              Content="Roll"
+              HorizontalAlignment="Right" />
+    </Grid>
+
+    <Separator Grid.Row="1"
+               Height="2"
+               Margin="{eddyfi:Thickness LeftRight=S}"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Stretch" />
+
+    <StackPanel Grid.Row="2">
       <diceGame:DiceControl Value="1" />
     </StackPanel>
   </Grid>

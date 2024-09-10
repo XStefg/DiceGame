@@ -7,10 +7,13 @@ using Eddyfi.Core;
 using GTeck.DicePer12;
 
 namespace GTeck.DiceGame;
+
 internal class MainWindowViewModel : BaseViewModel
 {
   public MainWindowViewModel()
   {
+    RollRandomCommand = Command.CreateFrom( RollRandomCommandHandler );
+
     _subscriber = this.GetSubscriberBuilder()
                       .AddSubscription( p => p.SelectedDice1, UpdateRoll )
                       .AddSubscription( p => p.SelectedDice2, UpdateRoll )
@@ -20,6 +23,8 @@ internal class MainWindowViewModel : BaseViewModel
                       .AddSubscription( p => p.SelectedDice6, UpdateRoll )
                       .SubscribeAndInvokeAll();
   }
+
+  public SimpleCommand RollRandomCommand { get; set; }
 
   public int SelectedDice1
   {
@@ -77,7 +82,21 @@ internal class MainWindowViewModel : BaseViewModel
     //  return;
     //}
 
-    Roll = new Roll( SelectedDice1 + 1, SelectedDice2 + 1, SelectedDice3 + 1, SelectedDice4 + 1, SelectedDice5 + 1, SelectedDice6 + 1);
+    Roll = new Roll( SelectedDice1 + 1, SelectedDice2 + 1, SelectedDice3 + 1, SelectedDice4 + 1, SelectedDice5 + 1, SelectedDice6 + 1 );
+
+    RollSet[] rollSetsRaw = RollUtil.AppendRemaingRoll( RollUtil.EnumRollSet( Roll ) ).OrderBy( s => s.Value ).ToArray();
+    RollSet[] rollSets    = RollUtil.RemoveDuplicate( rollSetsRaw ).ToArray();
+  }
+
+  private void RollRandomCommandHandler()
+  {
+    Roll newRoll = Roll.RollDices( 6 );
+    SelectedDice1 = newRoll.Dices[0].Value - 1;
+    SelectedDice2 = newRoll.Dices[1].Value - 1;
+    SelectedDice3 = newRoll.Dices[2].Value - 1;
+    SelectedDice4 = newRoll.Dices[3].Value - 1;
+    SelectedDice5 = newRoll.Dices[4].Value - 1;
+    SelectedDice6 = newRoll.Dices[5].Value - 1;
   }
 
   private int _selectedDice1;
@@ -89,5 +108,4 @@ internal class MainWindowViewModel : BaseViewModel
 
   private Roll?       _roll;
   private IDisposable _subscriber;
-
 }

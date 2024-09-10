@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace GTeck.DicePer12;
 
-[DebuggerDisplay("{OutputDebug}")]
+[DebuggerDisplay( "{OutputDebug}" )]
 public sealed record Roll( ImmutableArray<Dice> Dices )
 {
   public Roll( params Dice[] dices ) : this( dices.ToImmutableArray() )
@@ -17,7 +17,7 @@ public sealed record Roll( ImmutableArray<Dice> Dices )
   {
     if ( roll is not null )
     {
-      return Dices.SequenceEqual( roll.Dices);
+      return Dices.SequenceEqual( roll.Dices );
     }
 
     return false;
@@ -37,7 +37,7 @@ public sealed record Roll( ImmutableArray<Dice> Dices )
   public static Roll RollDices( int numberOfDices, int nbOfSide = 6 )
   {
     Random random = new();
-    Dice[] dices  = Enumerable.Range( 0, numberOfDices ).Select( _ => new Dice( random.Next( 1, nbOfSide + 1 ) ) ).ToArray();
+    Dice[] dices  = Enumerable.Range( 0, numberOfDices ).Select( _ => new Dice( random.Next( 1, nbOfSide + 1 ) ) ).OrderBy( s => s.Value ).ToArray();
     return new Roll( dices );
   }
 
