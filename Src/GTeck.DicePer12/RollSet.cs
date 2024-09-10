@@ -34,6 +34,6 @@ public sealed record RollSet( ImmutableArray<DiceSet> DiceSet, Roll RemaingRoll 
 
   public int Value => DiceSet.First().Dices.Sum( s => s.Value );
 
-  public string OutputDebug => $"DiceSet.Value={string.Join( ",", DiceSet.Select( d => d.Value ) )} RemainingRoll={RemaingRoll.OutputDebug}";
+  public string OutputDebug => $"Value = {Value} DiceSet={string.Join( ",", DiceSet.Select( d => string.Join("-", d.Dices.Select( s => s.Value  )) ) )} RemainingRoll={RemaingRoll.OutputDebug}";
 
 }

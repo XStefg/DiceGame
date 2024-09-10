@@ -9,7 +9,7 @@ namespace GTeck.DicePer12;
 [DebuggerDisplay( "{OutputDebug}" )]
 public sealed record DiceSet( ImmutableArray<Dice> Dices )
 {
-  public DiceSet( params Dice[] dices ) : this( dices.ToImmutableArray() )
+  public DiceSet( params Dice[] dices ) : this( dices.OrderBy( s => s.Value  ).ToImmutableArray() )
   {
   }
 

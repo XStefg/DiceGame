@@ -32,7 +32,7 @@
     <Grid.RowDefinitions>
       <RowDefinition Height="{eddyfi:GridLength Size=Px32}" />
       <RowDefinition Height="{eddyfi:GridLength Size=M}" />
-      <RowDefinition Height="{eddyfi:GridLength Size=Px32}" />
+      <RowDefinition Height="*" />
     </Grid.RowDefinitions>
 
     <Grid Grid.Row="0">
@@ -64,7 +64,40 @@
                HorizontalAlignment="Stretch" />
 
     <StackPanel Grid.Row="2">
-      <diceGame:DiceControl Value="1" />
+      <ItemsControl ItemsSource="{Binding RollSets}">
+        <ItemsControl.ItemTemplate>
+          <DataTemplate>
+            <StackPanel>
+              <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Value=" VerticalAlignment="Center" />
+                <TextBlock Text="{Binding Value}" VerticalAlignment="Center" />
+                <ItemsControl ItemsSource="{Binding DiceSet}">
+                  <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                      <ItemsControl ItemsSource="{Binding Dices}">
+                        <ItemsControl.ItemsPanel>
+                          <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal" />
+                          </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                          <DataTemplate>
+                            <diceGame:DiceControl Value="{Binding Value}" />
+                          </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                      </ItemsControl>
+                    </DataTemplate>
+                  </ItemsControl.ItemTemplate>
+                </ItemsControl>
+              </StackPanel>
+              <Separator VerticalAlignment="Center"
+                         HorizontalAlignment="Stretch"
+                         Height="2"
+                         Margin="{eddyfi:Thickness LeftRight=S}" />
+            </StackPanel>
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+      </ItemsControl>
     </StackPanel>
   </Grid>
 </Window>

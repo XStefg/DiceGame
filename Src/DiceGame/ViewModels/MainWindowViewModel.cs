@@ -76,6 +76,11 @@ internal class MainWindowViewModel : BaseViewModel
 
   private void UpdateRoll()
   {
+    if ( _suspendUpdateRoll )
+    {
+      return;
+    }
+
     //if ( SelectedDice1 == 0 || SelectedDice2 == 0 || SelectedDice3 == 0 || SelectedDice4 == 0 || SelectedDice5 == 0 || SelectedDice6 == 0 )
     //{
     //  Roll = null;
@@ -85,18 +90,30 @@ internal class MainWindowViewModel : BaseViewModel
     Roll = new Roll( SelectedDice1 + 1, SelectedDice2 + 1, SelectedDice3 + 1, SelectedDice4 + 1, SelectedDice5 + 1, SelectedDice6 + 1 );
 
     RollSet[] rollSetsRaw = RollUtil.AppendRemaingRoll( RollUtil.EnumRollSet( Roll ) ).OrderBy( s => s.Value ).ToArray();
-    RollSet[] rollSets    = RollUtil.RemoveDuplicate( rollSetsRaw ).ToArray();
+    RollSets = new ViewableCollection<RollSet>( RollUtil.RemoveDuplicate( rollSetsRaw ).ToArray() );
+  }
+
+  public ViewableCollection<RollSet> RollSets
+  {
+    get => _rollSets;
+    set => SetProperty( ref _rollSets, value );
   }
 
   private void RollRandomCommandHandler()
   {
-    Roll newRoll = Roll.RollDices( 6 );
+    _suspendUpdateRoll = true;
+
+    Roll newRoll = Roll.RollDices( numberOfDices: 6 );
     SelectedDice1 = newRoll.Dices[0].Value - 1;
     SelectedDice2 = newRoll.Dices[1].Value - 1;
     SelectedDice3 = newRoll.Dices[2].Value - 1;
     SelectedDice4 = newRoll.Dices[3].Value - 1;
     SelectedDice5 = newRoll.Dices[4].Value - 1;
     SelectedDice6 = newRoll.Dices[5].Value - 1;
+
+    _suspendUpdateRoll = false;
+
+    UpdateRoll();
   }
 
   private int _selectedDice1;
@@ -106,6 +123,11 @@ internal class MainWindowViewModel : BaseViewModel
   private int _selectedDice5;
   private int _selectedDice6;
 
-  private Roll?       _roll;
+  private Roll? _roll;
+
+  private ViewableCollection<RollSet> _rollSets = new();
+
   private IDisposable _subscriber;
+
+  private bool _suspendUpdateRoll;
 }
