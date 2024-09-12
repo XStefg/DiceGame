@@ -70,7 +70,7 @@
             <StackPanel>
               <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Value=" VerticalAlignment="Center" />
-                <TextBlock Text="{Binding Value}" VerticalAlignment="Center" />
+                <TextBlock Text="{Binding Value}" VerticalAlignment="Center" Margin="{eddyfi:Thickness Right=M}" />
                 <ItemsControl ItemsSource="{Binding DiceSet}">
                   <ItemsControl.ItemTemplate>
                     <DataTemplate>

@@ -90,7 +90,6 @@ public class RollUnitTests
                                                    new DiceSet( new Dice( 4 ), new Dice( 4 ) )
                                                  } );
     rollSets[1].RemaingRoll.Dices.Should().BeEquivalentTo( new Dice[] { new ( 4 )} );
-
   }
 
   [TestMethod]
@@ -173,17 +172,13 @@ public class RollUnitTests
     rollSets[3].DiceSet.Should().BeEquivalentTo( new[] { new DiceSet( new Dice( 2 ), new Dice( 6 ) ), new DiceSet( new Dice( 4 ), new Dice( 4 ) ) } );
     rollSets[3].RemaingRoll.Dices.Should().BeEquivalentTo( new Dice[] { 6 } );
 
-    rollSets[4].Value.Should().Be( 8 );
-    rollSets[4].DiceSet.Should().BeEquivalentTo( new[] { new DiceSet( new Dice( 4 ), new Dice( 4 ) ), new DiceSet( new Dice( 2 ), new Dice( 6 ) ) } );
-    rollSets[4].RemaingRoll.Dices.Should().BeEquivalentTo( new Dice[] { 6 } );
+    rollSets[4].Value.Should().Be( 10 );
+    rollSets[4].DiceSet.Should().BeEquivalentTo( new[] { new DiceSet( new Dice( 4 ), new Dice( 6 ) ), new DiceSet( new Dice( 4 ), new Dice( 6 ) ) } );
+    rollSets[4].RemaingRoll.Dices.Should().BeEquivalentTo( new Dice[] { 2 } );
 
-    rollSets[5].Value.Should().Be( 10 );
-    rollSets[5].DiceSet.Should().BeEquivalentTo( new[] { new DiceSet( new Dice( 4 ), new Dice( 6 ) ), new DiceSet( new Dice( 4 ), new Dice( 6 ) ) } );
-    rollSets[5].RemaingRoll.Dices.Should().BeEquivalentTo( new Dice[] { 2 } );
-
-    rollSets[6].Value.Should().Be( 12 );
-    rollSets[6].DiceSet.Should().BeEquivalentTo( new[] { new DiceSet( new Dice( 6 ), new Dice( 6 ) ) } );
-    rollSets[6].RemaingRoll.Dices.Should().BeEquivalentTo( new Dice[] { 2, 4, 4 } );
+    rollSets[5].Value.Should().Be( 12 );
+    rollSets[5].DiceSet.Should().BeEquivalentTo( new[] { new DiceSet( new Dice( 6 ), new Dice( 6 ) ) } );
+    rollSets[5].RemaingRoll.Dices.Should().BeEquivalentTo( new Dice[] { 2, 4, 4 } );
   }
 
   [TestMethod]
