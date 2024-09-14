@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        x:Name="MainWindowInstance"
         xmlns:local="clr-namespace:DiceGame"
         xmlns:eddyfi="http://schemas.eddyfi.com/wpf"
         xmlns:diceGame="clr-namespace:GTeck.DiceGame"
@@ -72,7 +73,7 @@
                 <StackPanel Orientation="Horizontal">
                   <TextBlock Text="Value=" VerticalAlignment="Center" />
                   <TextBlock Text="{Binding Value}" VerticalAlignment="Center" Margin="{eddyfi:Thickness Right=M}" />
-                  <ItemsControl ItemsSource="{Binding DiceSet}">
+                  <ItemsControl ItemsSource="{Binding DiceSet}" VerticalAlignment="Center">
                     <ItemsControl.ItemTemplate>
                       <DataTemplate>
                         <ItemsControl ItemsSource="{Binding Dices}">
@@ -90,6 +91,10 @@
                       </DataTemplate>
                     </ItemsControl.ItemTemplate>
                   </ItemsControl>
+                  <Button Content="Select"
+                          Command="{Binding ElementName=MainWindowInstance, Path=DataContext.PlayThisRollCommand}"
+                          CommandParameter="{Binding}"
+                          Margin="{eddyfi:Thickness All=S}" />
                 </StackPanel>
                 <Separator VerticalAlignment="Center"
                            HorizontalAlignment="Stretch"

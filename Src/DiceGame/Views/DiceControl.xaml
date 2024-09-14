@@ -9,12 +9,12 @@
              d:DesignHeight="450"
              d:DesignWidth="800">
   <Grid>
-    <eddyfi:SvgIcon x:Name="Icon1" Source="./Resources/Dice1.svg" />
-    <eddyfi:SvgIcon x:Name="Icon2" Source="./Resources/Dice2.svg" />
-    <eddyfi:SvgIcon x:Name="Icon3" Source="./Resources/Dice3.svg" />
-    <eddyfi:SvgIcon x:Name="Icon4" Source="./Resources/Dice4.svg" />
-    <eddyfi:SvgIcon x:Name="Icon5" Source="./Resources/Dice5.svg" />
-    <eddyfi:SvgIcon x:Name="Icon6" Source="./Resources/Dice6.svg" />
+    <eddyfi:SvgIcon x:Name="Icon1" Source="/Resources/Dice1.svg" />
+    <eddyfi:SvgIcon x:Name="Icon2" Source="/Resources/Dice2.svg" />
+    <eddyfi:SvgIcon x:Name="Icon3" Source="/Resources/Dice3.svg" />
+    <eddyfi:SvgIcon x:Name="Icon4" Source="/Resources/Dice4.svg" />
+    <eddyfi:SvgIcon x:Name="Icon5" Source="/Resources/Dice5.svg" />
+    <eddyfi:SvgIcon x:Name="Icon6" Source="/Resources/Dice6.svg" />
 
   </Grid>
 </UserControl>

@@ -12,7 +12,8 @@ internal class MainWindowViewModel : BaseViewModel
 {
   public MainWindowViewModel()
   {
-    RollRandomCommand = Command.CreateFrom( RollRandomCommandHandler );
+    RollRandomCommand   = Command.CreateFrom( RollRandomCommandHandler );
+    PlayThisRollCommand = Command.CreateFrom<RollSet>( PlayThisRollCommandHandler );
 
     _subscriber = this.GetSubscriberBuilder()
                       .AddSubscription( p => p.SelectedDice1, UpdateRoll )
@@ -23,6 +24,8 @@ internal class MainWindowViewModel : BaseViewModel
                       .AddSubscription( p => p.SelectedDice6, UpdateRoll )
                       .SubscribeAndInvokeAll();
   }
+
+  public SimpleCommand<RollSet> PlayThisRollCommand { get; set; }
 
   public SimpleCommand RollRandomCommand { get; set; }
 
@@ -81,16 +84,9 @@ internal class MainWindowViewModel : BaseViewModel
       return;
     }
 
-    //if ( SelectedDice1 == 0 || SelectedDice2 == 0 || SelectedDice3 == 0 || SelectedDice4 == 0 || SelectedDice5 == 0 || SelectedDice6 == 0 )
-    //{
-    //  Roll = null;
-    //  return;
-    //}
-
     Roll = new Roll( SelectedDice1 + 1, SelectedDice2 + 1, SelectedDice3 + 1, SelectedDice4 + 1, SelectedDice5 + 1, SelectedDice6 + 1 );
 
-    RollSet[] rollSetsRaw = RollUtil.AppendRemaingRoll( RollUtil.EnumRollSet( Roll ) ).OrderBy( s => s.Value ).ToArray();
-    RollSets = new ViewableCollection<RollSet>( RollUtil.RemoveDuplicate( rollSetsRaw ).ToArray() );
+    RollSets = new ViewableCollection<RollSet>( Roll.EnumRollSet().AppendRemaingRoll().OrderBy( s => s.Value ).RemoveDuplicate().ToArray() );
   }
 
   public ViewableCollection<RollSet> RollSets
@@ -114,6 +110,10 @@ internal class MainWindowViewModel : BaseViewModel
     _suspendUpdateRoll = false;
 
     UpdateRoll();
+  }
+
+  private void PlayThisRollCommandHandler( RollSet obj )
+  {
   }
 
   private int _selectedDice1;

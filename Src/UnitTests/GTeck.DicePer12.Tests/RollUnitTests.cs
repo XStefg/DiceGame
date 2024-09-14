@@ -11,7 +11,7 @@ public class RollUnitTests
   [TestMethod]
   public void EnumRollSet_TestCase1()
   {
-    RollSet[] rollSets = RollUtil.EnumRollSet( new Roll( 2, 4, 4, 6, 6 ) ).OrderBy( s => s.Value ).ToArray();
+    RollSet[] rollSets = new Roll( 2, 4, 4, 6, 6 ).EnumRollSet().OrderBy( s => s.Value ).ToArray();
 
     rollSets[0].Value.Should().Be( 2 );
     rollSets[0].DiceSet.Should().BeEquivalentTo( new[] { new DiceSet( new Dice( 2 ) ) } );
@@ -69,33 +69,26 @@ public class RollUnitTests
   [TestMethod]
   public void RemoveDuplicate_TestCase2()
   {
-    RollSet[] rollSetsRaw = RollUtil.AppendRemaingRoll( RollUtil.EnumRollSet( new Roll( 4, 4, 4, 4, 4 ) ) ).OrderBy( s => s.Value ).ToArray();
-    RollSet[] rollSets = RollUtil.RemoveDuplicate( rollSetsRaw ).ToArray();
+    RollSet[] rollSetsRaw = new Roll( 4, 4, 4, 4, 4 ).EnumRollSet().AppendRemaingRoll().OrderBy( s => s.Value ).ToArray();
+    RollSet[] rollSets    = rollSetsRaw.RemoveDuplicate().ToArray();
 
     rollSets[0].Value.Should().Be( 4 );
     rollSets[0].DiceSet.Should().BeEquivalentTo( new[]
                                                  {
-                                                   new DiceSet( new Dice( 4 ) ), 
-                                                   new DiceSet( new Dice( 4 ) ),
-                                                   new DiceSet( new Dice( 4 ) ),
-                                                   new DiceSet( new Dice( 4 ) ),
-                                                   new DiceSet( new Dice( 4 ) )
+                                                   new DiceSet( new Dice( 4 ) ), new DiceSet( new Dice( 4 ) ), new DiceSet( new Dice( 4 ) ),
+                                                   new DiceSet( new Dice( 4 ) ), new DiceSet( new Dice( 4 ) )
                                                  } );
     rollSets[0].RemaingRoll.Dices.Should().BeEquivalentTo( new Dice[] { } );
 
     rollSets[1].Value.Should().Be( 8 );
-    rollSets[1].DiceSet.Should().BeEquivalentTo( new[]
-                                                 {
-                                                   new DiceSet( new Dice( 4 ), new Dice( 4 ) ), 
-                                                   new DiceSet( new Dice( 4 ), new Dice( 4 ) )
-                                                 } );
-    rollSets[1].RemaingRoll.Dices.Should().BeEquivalentTo( new Dice[] { new ( 4 )} );
+    rollSets[1].DiceSet.Should().BeEquivalentTo( new[] { new DiceSet( new Dice( 4 ), new Dice( 4 ) ), new DiceSet( new Dice( 4 ), new Dice( 4 ) ) } );
+    rollSets[1].RemaingRoll.Dices.Should().BeEquivalentTo( new Dice[] { new( 4 ) } );
   }
 
   [TestMethod]
   public void AppendRemaingRoll_TestCase1()
   {
-    RollSet[] rollSets = RollUtil.AppendRemaingRoll( RollUtil.EnumRollSet( new Roll( 2, 4, 4, 6, 6 ) ) ).OrderBy( s => s.Value ).ToArray();
+    RollSet[] rollSets = new Roll( 2, 4, 4, 6, 6 ).EnumRollSet().AppendRemaingRoll().OrderBy( s => s.Value ).ToArray();
 
     rollSets[0].Value.Should().Be( 2 );
     rollSets[0].DiceSet.Should().BeEquivalentTo( new[] { new DiceSet( new Dice( 2 ) ) } );
@@ -153,8 +146,8 @@ public class RollUnitTests
   [TestMethod]
   public void RemoveDuplicate_TestCase1()
   {
-    RollSet[] rollSetsRaw = RollUtil.AppendRemaingRoll( RollUtil.EnumRollSet( new Roll( 2, 4, 4, 6, 6 ) ) ).OrderBy( s => s.Value ).ToArray();
-    RollSet[] rollSets = RollUtil.RemoveDuplicate( rollSetsRaw ).ToArray();
+    RollSet[] rollSetsRaw = new Roll( 2, 4, 4, 6, 6 ).EnumRollSet().AppendRemaingRoll().OrderBy( s => s.Value ).ToArray();
+    RollSet[] rollSets    = rollSetsRaw.RemoveDuplicate().ToArray();
 
     rollSets[0].Value.Should().Be( 2 );
     rollSets[0].DiceSet.Should().BeEquivalentTo( new[] { new DiceSet( new Dice( 2 ) ) } );
