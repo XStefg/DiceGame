@@ -64,40 +64,42 @@
                HorizontalAlignment="Stretch" />
 
     <StackPanel Grid.Row="2">
-      <ItemsControl ItemsSource="{Binding RollSets}">
-        <ItemsControl.ItemTemplate>
-          <DataTemplate>
-            <StackPanel>
-              <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Value=" VerticalAlignment="Center" />
-                <TextBlock Text="{Binding Value}" VerticalAlignment="Center" Margin="{eddyfi:Thickness Right=M}" />
-                <ItemsControl ItemsSource="{Binding DiceSet}">
-                  <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                      <ItemsControl ItemsSource="{Binding Dices}">
-                        <ItemsControl.ItemsPanel>
-                          <ItemsPanelTemplate>
-                            <StackPanel Orientation="Horizontal" />
-                          </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                        <ItemsControl.ItemTemplate>
-                          <DataTemplate>
-                            <diceGame:DiceControl Value="{Binding Value}" />
-                          </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                      </ItemsControl>
-                    </DataTemplate>
-                  </ItemsControl.ItemTemplate>
-                </ItemsControl>
+      <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto">
+        <ItemsControl ItemsSource="{Binding RollSets}">
+          <ItemsControl.ItemTemplate>
+            <DataTemplate>
+              <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                  <TextBlock Text="Value=" VerticalAlignment="Center" />
+                  <TextBlock Text="{Binding Value}" VerticalAlignment="Center" Margin="{eddyfi:Thickness Right=M}" />
+                  <ItemsControl ItemsSource="{Binding DiceSet}">
+                    <ItemsControl.ItemTemplate>
+                      <DataTemplate>
+                        <ItemsControl ItemsSource="{Binding Dices}">
+                          <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                              <StackPanel Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                          </ItemsControl.ItemsPanel>
+                          <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                              <diceGame:DiceControl Value="{Binding Value}" />
+                            </DataTemplate>
+                          </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                      </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                  </ItemsControl>
+                </StackPanel>
+                <Separator VerticalAlignment="Center"
+                           HorizontalAlignment="Stretch"
+                           Height="2"
+                           Margin="{eddyfi:Thickness LeftRight=S}" />
               </StackPanel>
-              <Separator VerticalAlignment="Center"
-                         HorizontalAlignment="Stretch"
-                         Height="2"
-                         Margin="{eddyfi:Thickness LeftRight=S}" />
-            </StackPanel>
-          </DataTemplate>
-        </ItemsControl.ItemTemplate>
-      </ItemsControl>
+            </DataTemplate>
+          </ItemsControl.ItemTemplate>
+        </ItemsControl>
+      </ScrollViewer>
     </StackPanel>
   </Grid>
 </Window>
