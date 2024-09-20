@@ -33,21 +33,19 @@ public static class RollUtil
   {
     foreach ( RollSet current in currentRollSet )
     {
-      Roll          remaingRoll = current.RemaingRoll;
-      List<DiceSet> newDiceSet  = current.AddMatchingFrom( ref remaingRoll );
-
-      yield return new( newDiceSet.ToArray(), remaingRoll );
+      yield return current.AddMatchingFrom( current.RemaingRoll );
     }
   }
 
-  public static List<DiceSet> AddMatchingFrom( this RollSet current, ref Roll remaingRoll )
+  public static RollSet AddMatchingFrom( this RollSet current, Roll remaingRoll )
   {
     List<DiceSet> newDiceSet  = new( current.DiceSet );
     bool          hasMatching = false;
     do
     {
       IEnumerable<RollSet> rollsetFromRemaining = EnumRollSet( remaingRoll );
-      RollSet?             mathchingSet         = rollsetFromRemaining.FirstOrDefault( s => s.Value == current.Value );
+
+      RollSet? mathchingSet = rollsetFromRemaining.FirstOrDefault( s => s.Value == current.Value );
       if ( mathchingSet != null )
       {
         remaingRoll = mathchingSet.RemaingRoll;
@@ -60,7 +58,7 @@ public static class RollUtil
       }
     } while ( hasMatching );
 
-    return newDiceSet;
+    return new RollSet( newDiceSet.ToArray(), remaingRoll );
   }
 
   public static IEnumerable<RollSet> RemoveDuplicate( this IEnumerable<RollSet> currentRollSet )
