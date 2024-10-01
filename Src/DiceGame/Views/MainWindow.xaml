@@ -29,6 +29,7 @@
       </Setter>
     </Style>
     <eddyfi:BooleanToCustomVisibilityConverter x:Key="BooleanToVisibilityCollapsedConverter" VisibilityIfFalse="Collapsed" VisibilityIfTrue="Visible" />
+    <eddyfi:BooleanToCustomVisibilityConverter x:Key="InvertBooleanToVisibilityCollapsedConverter" VisibilityIfFalse="Visible" VisibilityIfTrue="Collapsed" />
 
   </Window.Resources>
 
@@ -128,6 +129,7 @@
                   </ItemsControl>
                   <Button Content="Select"
                           Command="{Binding ElementName=MainWindowInstance, Path=DataContext.PlayThisRollCommand}"
+                          Visibility="{Binding ElementName=MainWindowInstance, Path=DataContext.PlayingHand, Converter={StaticResource InvertBooleanToVisibilityCollapsedConverter}}"
                           CommandParameter="{Binding}"
                           Margin="{eddyfi:Thickness All=S}" />
                 </StackPanel>

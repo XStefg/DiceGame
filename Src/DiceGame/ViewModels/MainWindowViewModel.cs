@@ -161,7 +161,7 @@ internal class MainWindowViewModel : BaseViewModel
   {
     Roll newRoll = Roll.RollDices( HandRoll.Dices.Length != 0 ? HandRoll.Dices.Length : 6 );
 
-    RollSet updated = RollSets.First().AddMatchingFrom( newRoll );
+    RollSet updated = RollSets.First().AddMatchingFrom( newRoll, out _ );
 
     RollSets.Clear();
     RollSets.Add( updated );

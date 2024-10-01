@@ -33,14 +33,14 @@ public static class RollUtil
   {
     foreach ( RollSet current in currentRollSet )
     {
-      yield return current.AddMatchingFrom( current.RemaingRoll );
+      yield return current.AddMatchingFrom( current.RemaingRoll, out _ );
     }
   }
 
-  public static RollSet AddMatchingFrom( this RollSet current, Roll remaingRoll )
+  public static RollSet AddMatchingFrom( this RollSet current, Roll remaingRoll, out bool hasMatching )
   {
     List<DiceSet> newDiceSet  = new( current.DiceSet );
-    bool          hasMatching = false;
+    hasMatching = false;
     do
     {
       IEnumerable<RollSet> rollsetFromRemaining = EnumRollSet( remaingRoll );
@@ -54,9 +54,9 @@ public static class RollUtil
       }
       else
       {
-        hasMatching = false;
+        break;
       }
-    } while ( hasMatching );
+    } while ( true );
 
     return new RollSet( newDiceSet.ToArray(), remaingRoll );
   }
